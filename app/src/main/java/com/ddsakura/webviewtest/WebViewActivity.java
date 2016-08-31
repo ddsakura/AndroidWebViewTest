@@ -2,6 +2,7 @@
 package com.ddsakura.webviewtest;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.text.TextUtils;
@@ -40,6 +41,9 @@ public class WebViewActivity extends AppCompatActivity {
         webSettings.setDefaultTextEncodingName("utf-8");
         if (android.os.Build.VERSION.SDK_INT >= 21) {
             webSettings.setMixedContentMode(WebSettings.MIXED_CONTENT_ALWAYS_ALLOW);
+        }
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+            WebView.setWebContentsDebuggingEnabled(true);
         }
 
         webView.setWebViewClient(new MyWebViewClient());
